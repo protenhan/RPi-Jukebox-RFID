@@ -3,7 +3,8 @@
 # Reference: https://panther.software/configuration-code/raspberry-pi-3-4-faster-boot-time-in-few-easy-steps/
 
 OPTIMIZE_DHCP_CONF="/etc/dhcpcd.conf"
-OPTIMIZE_BOOT_CMDLINE_OPTIONS="consoleblank=1 logo.nologo quiet loglevel=0 plymouth.enable=0 vt.global_cursor_default=0 plymouth.ignore-serial-consoles splash fastboot noatime nodiratime noram"
+# OPTIMIZE_BOOT_CMDLINE_OPTIONS="consoleblank=1 logo.nologo quiet loglevel=0 plymouth.enable=0 vt.global_cursor_default=0 plymouth.ignore-serial-consoles splash fastboot noatime nodiratime noram"
+OPTIMIZE_BOOT_CMDLINE_OPTIONS=" logo.nologo plymouth.enable=0 plymouth.ignore-serial-consoles splash fastboot noatime nodiratime noram"
 OPTIMIZE_BOOT_CMDLINE_OPTIONS_IPV6="ipv6.disable=1"
 OPTIMIZE_DHCP_CONF_HEADER="## Jukebox DHCP Config"
 OPTIMIZE_BOOT_CONF_HEADER="## Jukebox Boot Config"
@@ -103,7 +104,7 @@ _optimize_handle_boot_screen() {
       sudo tee -a $configFile <<-EOF
 
 ${OPTIMIZE_BOOT_CONF_HEADER}
-disable_splash=1
+disable_splash=0
 
 EOF
     fi
